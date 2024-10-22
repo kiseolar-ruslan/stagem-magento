@@ -12,7 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class OrderToXml extends Command
 {
-    protected const ORDER_NUMBER_COMMAND = 'number';
+    protected const COMMAND_NAME         = 'custom:order';
+    protected const COMMAND_ORDER_NUMBER = 'number';
+    protected const COMMAND_DESCRIPTION  = 'Receiving order data by order number';
 
     public function __construct(
         protected DataRecipient $dataRecipient,
@@ -26,14 +28,14 @@ class OrderToXml extends Command
     {
         $options = [
             new InputOption(
-                self::ORDER_NUMBER_COMMAND,
+                self::COMMAND_ORDER_NUMBER,
                 null,
                 InputOption::VALUE_REQUIRED,
-                'Description: order number'
+                self::COMMAND_DESCRIPTION
             )
         ];
 
-        $this->setName('example:order')
+        $this->setName(self::COMMAND_NAME)
              ->setDescription('Command line description')
              ->setDefinition($options);
 
@@ -42,7 +44,7 @@ class OrderToXml extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $inputOrderNumber = $input->getOption(self::ORDER_NUMBER_COMMAND);
+        $inputOrderNumber = $input->getOption(self::COMMAND_ORDER_NUMBER);
 
         if (isset($inputOrderNumber) === true) {
             $output->writeln("Order number: $inputOrderNumber");
