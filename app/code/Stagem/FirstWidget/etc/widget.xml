@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+    <widget id="widget_id" class="Stagem\FirstWidget\Block\Widget\CustomWidget">
+        <label translate="true">Widget label</label>
+        <description>Widget description</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Label</label>
+            </parameter>
+            <parameter name="qty_products" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Quantity of products</label>
+            </parameter>
+            <parameter name="category" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Category</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

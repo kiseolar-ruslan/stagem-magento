@@ -1,0 +1,84 @@
+<?php
+/** @var TemplateEngineInterface $this */
+
+/** @var CustomWidget $block */
+/** @var InlineUtilInterface $csp */
+/** @var Escaper $escaper */
+
+/** @var SecureHtmlRenderer $secureRenderer */
+
+use Magento\Csp\Api\InlineUtilInterface;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use Magento\Framework\View\TemplateEngineInterface;
+use Stagem\FirstWidget\Block\Widget\CustomWidget;
+
+?>
+<div class="widget-title-con">
+    <h3 class="title"><?= $escaper->escapeHtml($block->getData('title')) ?></h3>
+</div>
+<div class="widget-quantity-con">
+    <p class="widget-description">
+        <?= $escaper->escapeHtml(__('Quantity of products:')) ?>
+        <?= $escaper->escapeHtml($block->getQtyProducts()) ?>
+    </p>
+</div>
+<div class="widget-category-con">
+    <p class="widget-description">
+        <?= $escaper->escapeHtml(__('Category:')) ?>
+        <?= $escaper->escapeHtml($block->getCategory()) ?>
+    </p>
+</div>
+
+<?php
+$productsData = $block->exec();
+?>
+
+<div class="widget-container">
+    <div class="widget-content-container">
+        <?php
+        if (empty($productsData) === false) {
+            foreach ($productsData as $data) {
+                ?>
+                <div class="widget-item">
+                    <div class="item-img-container">
+                        <img src="<?= $data['image_url'] ?>" alt="" class="item-img">
+                    </div>
+                    <div class="item-name-container">
+                        <p class="item-name"><?= $data['name'] ?></p>
+                    </div>
+                    <div class="item-price-container">
+                        <p class="item-price"><?= '$' . $data['price'] ?></p>
+                    </div>
+                    <?php
+                    if (isset($data['conf']) === true) {
+                        ?>
+                        <div class="item-size-container">
+                            <?php
+                            foreach ($data['conf']['size'] as $sizeAttr) {
+                                ?>
+                                <p class="size-attr"><?= $sizeAttr ?></p>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <div class="item-color-container">
+                            <?php
+                            foreach ($data['conf']['color'] as $collorAttr) {
+                                ?>
+                                <p class="color-attr" style="background-color:<?= $collorAttr ?>"></p>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+        }
+        ?>
+    </div>
+</div>
