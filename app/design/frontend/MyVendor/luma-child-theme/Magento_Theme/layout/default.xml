@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="header.panel" remove="true"/>
+<!--        <referenceContainer name="header.panel" remove="true"/>-->
         <referenceContainer name="footer">
             <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links"
                    template="Magento_Store::switch/stores.phtml"/>
@@ -23,5 +23,8 @@
                 <argument name="logo_img_height" xsi:type="number">50</argument>
             </arguments>
         </referenceBlock>
+
+        <!--   Styles for body html tag     -->
+        <!--        <attribute name="style" value="background-color:#000 !important;"/>-->
     </body>
 </page>
