@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.shipping.method.additional">
+            <block class="Magento\Framework\View\Element\Html\Link" name="back_to_cart">
+                <arguments>
+                    <argument name="label" xsi:type="string">Back to Cart</argument>
+                    <argument name="path" xsi:type="string">checkout/cart</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
